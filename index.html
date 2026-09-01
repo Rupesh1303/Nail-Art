@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Krupa Nails — Book Your Appointment</title>
+<style>
+:root{--ink:#33252b;--muted:#76666c;--cream:#fffaf7;--pink:#f5dce4;--rose:#c98298;--dark:#4d3039;--white:#fff}
+*{box-sizing:border-box}body{margin:0;font-family:Inter,Arial,sans-serif;color:var(--ink);background:var(--cream);line-height:1.5}
+nav{position:sticky;top:0;z-index:10;background:rgba(255,250,247,.94);backdrop-filter:blur(10px);border-bottom:1px solid #f0e4e4}
+.nav{max-width:1100px;margin:auto;padding:16px 24px;display:flex;align-items:center;justify-content:space-between}.logo{font-family:Georgia,serif;font-size:25px;font-weight:bold}.logo span{color:var(--rose)}
+nav a{color:var(--ink);text-decoration:none;margin-left:25px;font-size:14px}
+.hero{max-width:1100px;margin:auto;padding:76px 24px 55px;display:grid;grid-template-columns:1.1fr .9fr;gap:45px;align-items:center}
+.eyebrow{text-transform:uppercase;letter-spacing:3px;color:var(--rose);font-size:12px;font-weight:700}
+h1{font:clamp(44px,6vw,72px)/1.02 Georgia,serif;margin:14px 0}.hero p{max-width:570px;color:var(--muted);font-size:18px}
+.btn{display:inline-block;background:var(--dark);color:white;border:0;border-radius:30px;padding:14px 24px;text-decoration:none;font-weight:700;cursor:pointer}.btn.light{background:var(--pink);color:var(--dark)}
+.hero-art{min-height:430px;border-radius:34px;background:linear-gradient(145deg,#f1d7df,#fff1ec);display:flex;align-items:center;justify-content:center;box-shadow:0 20px 50px #5c35401b;font-size:120px}
+section{max-width:1100px;margin:auto;padding:65px 24px}.section-head{text-align:center;margin-bottom:35px}.section-head h2{font:42px Georgia,serif;margin:8px 0}.section-head p{color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}.card{background:#fff;border:1px solid #f1e4e5;border-radius:22px;overflow:hidden;box-shadow:0 8px 25px #6d3e4a0b}.photo{height:220px;background:linear-gradient(135deg,#f8e6eb,#f3d4dd);display:flex;align-items:center;justify-content:center;font-size:72px}.card-body{padding:20px}.card h3{margin:0 0 5px;font:25px Georgia,serif}.price{font-weight:800;font-size:20px}.meta{color:var(--muted);font-size:14px;margin:6px 0 16px}.card .btn{width:100%}
+.booking{background:#fff;border:1px solid #f0e1e4;border-radius:28px;padding:30px;max-width:760px;margin:auto;box-shadow:0 12px 40px #6d3e4a0d}.steps{display:flex;gap:8px;margin-bottom:25px}.step{flex:1;text-align:center;padding:9px;border-radius:12px;background:#f8eff1;color:#9a8188;font-size:13px}.step.active{background:var(--pink);color:var(--dark);font-weight:bold}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:15px}label{font-size:13px;font-weight:700}input,select{width:100%;margin-top:6px;padding:13px;border:1px solid #dfd0d4;border-radius:12px;background:#fff;font:inherit;color:var(--ink)}.full{grid-column:1/-1}.summary{background:#fff8fa;padding:15px;border-radius:14px;margin:18px 0}.success{display:none;text-align:center;padding:30px}.success h3{font:32px Georgia,serif}
+footer{background:#3d2930;color:#fff;text-align:center;padding:35px 20px;margin-top:30px}footer p{opacity:.75}
+@media(max-width:750px){.hero{grid-template-columns:1fr;padding-top:45px}.hero-art{min-height:280px}.grid{grid-template-columns:1fr}.form-grid{grid-template-columns:1fr}.full{grid-column:auto}nav a{margin-left:10px}.nav{padding:14px 16px}section{padding:48px 18px}}
+</style>
+</head>
+<body>
+<nav><div class="nav"><div class="logo">Krupa <span>Nails</span></div><div><a href="#services">Services</a><a href="#booking">Book</a></div></div></nav>
+
+<header class="hero">
+<div><div class="eyebrow">Beauty • Care • Confidence</div><h1>Your nails,<br>your little luxury.</h1><p>Discover beautiful manicures, gel sets and nail art designed to make you feel effortlessly polished.</p><a class="btn" href="#booking">Book an Appointment</a></div>
+<div class="hero-art" aria-label="Nail salon illustration">💅🏻</div>
+</header>
+
+<section id="services">
+<div class="section-head"><div class="eyebrow">Our menu</div><h2>Choose your nail style</h2><p>Every service includes a careful prep and a polished finish.</p></div>
+<div class="grid" id="serviceGrid"></div>
+</section>
+
+<section id="booking">
+<div class="section-head"><div class="eyebrow">Reserve your spot</div><h2>Book your appointment</h2><p>Choose a service, date and time. Your request will be confirmed below.</p></div>
+<div class="booking">
+<div class="steps"><div class="step active">1. Service</div><div class="step active">2. Date & Time</div><div class="step active">3. Details</div></div>
+<form id="bookingForm">
+<div class="form-grid">
+<div><label>Service<select id="service" required></select></label></div>
+<div><label>Date*<input id="date" type="date" required></label></div>
+<div><label>Time*<select id="time" required><option value="">Select a time</option><option>9:00 AM</option><option>10:30 AM</option><option>12:00 PM</option><option>1:30 PM</option><option>3:00 PM</option><option>4:30 PM</option><option>6:00 PM</option></select></label></div>
+<div><label>Your name<input id="name" required placeholder="Enter your name"></label></div>
+<div><label>Phone<input id="phone" type="tel" required placeholder="0400 000 000"></label></div>
+<div><label>Email<input id="email" type="email" required placeholder="Enter email address"></label></div>
+<div class="full"><label>Notes (optional)<input id="notes" placeholder="Colour preference, nail art request, etc."></label></div>
+</div>
+<div class="summary"><strong>Appointment:</strong> <span id="preview">Select your service, date and time.</span></div>
+<button class="btn" type="submit">Confirm Appointment</button>
+</form>
+<div class="success" id="success"><div style="font-size:60px">✨</div><h3>Appointment requested!</h3><p id="successText"></p><a class="btn" href="#services" onclick="location.reload()">Book another</a></div>
+</div>
+</section>
+
+<footer><strong>Krupa Nails</strong><p>Beautiful nails. Relaxed appointments. © 2026</p></footer>
+
+<script>
+const services=[
+{name:"Classic Manicure",price:35,time:"30 min",emoji:"🤍"},
+{name:"Gel Manicure",price:50,time:"45 min",emoji:"✨"},
+{name:"Acrylic Full Set",price:70,time:"90 min",emoji:"💗"},
+{name:"French Tips",price:60,time:"60 min",emoji:"🌸"},
+{name:"Nail Art",price:15,time:"20 min",emoji:"🎨"},
+{name:"Gel Removal",price:20,time:"20 min",emoji:"🫧"}
+];
+const grid=document.getElementById("serviceGrid"), select=document.getElementById("service");
+services.forEach((s,i)=>{
+grid.innerHTML+=`<article class="card"><div class="photo">${s.emoji}</div><div class="card-body"><h3>${s.name}</h3><div class="price">$${s.price}</div><div class="meta">${s.time} • Professional finish</div><button class="btn light" onclick="choose(${i})">Book this service</button></div></article>`;
+select.innerHTML+=`<option value="${i}">${s.name} — $${s.price}</option>`;
+});
+function choose(i){select.value=i;document.getElementById("booking").scrollIntoView({behavior:"smooth"});update()}
+function update(){
+const s=services[select.value];const d=document.getElementById("date").value,t=document.getElementById("time").value;
+document.getElementById("preview").textContent=s?(s.name+" • $"+s.price+(d?" • "+new Date(d+"T00:00:00").toLocaleDateString("en-AU"):"")+(t?" • "+t:"")):"Select your service, date and time.";
+}
+select.onchange=update;document.getElementById("date").onchange=update;document.getElementById("time").onchange=update;
+const date=document.getElementById("date");date.min=new Date().toISOString().split("T")[0];
+document.getElementById("bookingForm").onsubmit=e=>{
+e.preventDefault();const s=services[select.value],d=new Date(date.value+"T00:00:00").toLocaleDateString("en-AU",{weekday:"long",day:"numeric",month:"long"});
+document.getElementById("successText").textContent=`Thanks, ${document.getElementById("name").value}! Your ${s.name} appointment is requested for ${d} at ${document.getElementById("time").value}.`;
+e.target.style.display="none";document.getElementById("success").style.display="block";
+};
+</script>
+</body>
+</html>
