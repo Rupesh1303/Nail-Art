@@ -3,7 +3,7 @@
    Format: country code + number, koi + ya spaces nahi.
    Example: India ke liye 91XXXXXXXXXX (91 + 10 digit number)
    ========================== */
-const SALON_WHATSAPP = "493298617";
+const SALON_WHATSAPP = "+61493298617";
 
 const NAIL_IMG = "https://images.unsplash.com/photo-1604654894610-df63bc536371?w=600&q=80";
 document.getElementById("heroImg").src = NAIL_IMG;
