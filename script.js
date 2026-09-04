@@ -17,6 +17,7 @@
 const EMAILJS_PUBLIC_KEY = "sjp-A1OMcASwbKIu9";
 const EMAILJS_SERVICE_ID = "service_rn8uejc";
 const EMAILJS_TEMPLATE_ID = "template_623ebal";
+const EMAILJS_CUSTOMER_TEMPLATE_ID = "template_r2zexe6";
 const SALON_EMAIL = "krupalinails@gmail.com";
 
 emailjs.init(EMAILJS_PUBLIC_KEY);
@@ -95,7 +96,7 @@ document.getElementById("bookingForm").onsubmit=e=>{
   const notes=document.getElementById("notes").value || "None";
   const timeVal=document.getElementById("time").value;
 
-  const templateParams = {
+  const salonParams = {
     to_email: SALON_EMAIL,
     from_name: customerName,
     from_email: customerEmail,
@@ -107,9 +108,21 @@ document.getElementById("bookingForm").onsubmit=e=>{
     notes: notes
   };
 
-  emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams)
+  const customerParams = {
+    to_email: customerEmail,
+    to_name: customerName,
+    service: s.name,
+    price: s.price,
+    date: d,
+    time: timeVal
+  };
+
+  Promise.all([
+    emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, salonParams),
+    emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_CUSTOMER_TEMPLATE_ID, customerParams)
+  ])
     .then(function(){
-      document.getElementById("successText").textContent=`Thanks, ${customerName}! Your ${s.name} appointment is requested for ${d} at ${timeVal}. We'll confirm with you shortly by email or phone.`;
+      document.getElementById("successText").textContent=`Thanks, ${customerName}! Your ${s.name} appointment is requested for ${d} at ${timeVal}. We've sent a confirmation to ${customerEmail}.`;
       e.target.style.display="none";
       document.getElementById("success").style.display="block";
     })
